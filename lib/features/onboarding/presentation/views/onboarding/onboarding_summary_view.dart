@@ -185,3 +185,103 @@ class OnboardingSummaryView extends StatelessWidget {
     );
   }
 }
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyScreens(),
+    );
+  }
+}
+
+class MyScreens extends StatelessWidget {
+  final PageController controller = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView(
+        controller: controller,
+        scrollDirection: Axis.horizontal,
+        children: [
+          ScreenOne(),
+          ScreenTwo(),
+          ScreenThree(),
+        ],
+      ),
+    );
+  }
+}
+
+class ScreenOne extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.blue,
+          ),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: MyContainer(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ScreenTwo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.green,
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: MyContainer(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ScreenThree extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.orange,
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: MyContainer(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MyContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100,
+      height: 2,
+      color: Colors.red,
+    );
+  }
+}

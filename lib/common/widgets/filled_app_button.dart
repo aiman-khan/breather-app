@@ -1,4 +1,4 @@
-import 'package:my_breather_app/utils/resource/r.dart';
+import 'package:breather_app/utils/resource/r.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +12,7 @@ class FilledAppButton extends StatelessWidget {
     super.key,
     this.width,
     this.height,
+    this.fontSize,
   });
 
   final String text;
@@ -20,6 +21,7 @@ class FilledAppButton extends StatelessWidget {
   final Color? textColor;
   final double? width;
   final double? height;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,8 @@ class FilledAppButton extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.notoSans(
-          color: textColor ?? R.colors.black,
-          fontSize: 35.sp,
+          color: textColor ?? R.colors.white,
+          fontSize: fontSize ?? 35.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.42.w,
         ),

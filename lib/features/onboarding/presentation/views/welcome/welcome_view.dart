@@ -1,12 +1,12 @@
+import 'package:breather_app/common/widgets/app_name_widget.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_breather_app/common/extensions/num.dart';
-import 'package:my_breather_app/common/widgets/filled_app_button.dart';
-import 'package:my_breather_app/utils/resource/r.dart';
+import 'package:breather_app/common/extensions/num.dart';
+import 'package:breather_app/common/widgets/filled_app_button.dart';
+import 'package:breather_app/utils/resource/r.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:my_breather_app/utils/router/paths.dart';
+import 'package:breather_app/utils/router/paths.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
@@ -21,15 +21,7 @@ class WelcomeView extends StatelessWidget {
             child: Column(
               children: [
                 /// [App Name]
-                Text(
-                  'BREATHER',
-                  style: GoogleFonts.hurricane(
-                    fontSize: 50.sp,
-                    letterSpacing: 6.w,
-                    color: R.colors.black,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+                const AppNameWidget(),
 
                 23.hb,
 
@@ -58,8 +50,7 @@ class WelcomeView extends StatelessWidget {
                 /// [Let's go Button]
                 FilledAppButton(
                   text: "Let's go",
-                  onTap: () =>
-                      GoRouter.of(context).push(RoutePaths.onboardingBegin),
+                  onTap: () => GoRouter.of(context).push(RoutePaths.onboarding),
                   color: R.colors.blue42C4FB,
                   textColor: R.colors.white,
                 ),

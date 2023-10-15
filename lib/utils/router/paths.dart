@@ -2,7 +2,9 @@ class RoutePaths {
   RoutePaths._();
 
   static const welcome = '/';
-  static const onboardingBegin = '/onboardingBegin';
-  static const onboardingTest = '/onboardingTest';
-  static const onboardingSummary = '/onboardingSummary';
+  static const onboarding = '/onboarding';
+  static const login = '/login';
+  static const register = '/register';
+  static const forgetPassword = '/forgetPassword';
+  static const home = '/home';
 }

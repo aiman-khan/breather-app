@@ -1,5 +1,6 @@
-import 'package:my_breather_app/utils/di/di.dart';
-import 'package:my_breather_app/utils/router/router.dart';
+import 'package:breather_app/utils/di/di.dart';
+import 'package:breather_app/utils/resource/r.dart';
+import 'package:breather_app/utils/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,6 +53,7 @@ class _ProviderAppState extends State<ProviderApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: GoogleFonts.interTextTheme(),
+          scaffoldBackgroundColor: R.colors.white,
         ),
         routerConfig: router,
       ),

@@ -1,4 +1,4 @@
-import 'package:my_breather_app/utils/resource/r.dart';
+import 'package:breather_app/utils/resource/r.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

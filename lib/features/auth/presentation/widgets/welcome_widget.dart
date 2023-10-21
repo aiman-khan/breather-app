@@ -9,7 +9,10 @@ import 'package:go_router/go_router.dart';
 class WelcomeWidget extends StatelessWidget {
   const WelcomeWidget({
     super.key,
+    this.onTap,
   });
+
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,8 @@ class WelcomeWidget extends StatelessWidget {
               475.hb,
               FilledAppButton(
                 text: 'Start here',
-                onTap: () => GoRouter.of(context).push(RoutePaths.home),
+                onTap: () =>
+                    onTap ?? GoRouter.of(context).push(RoutePaths.home),
                 color: R.colors.blue42C4FB,
                 width: 480.w,
                 height: 90.h,

@@ -2,12 +2,13 @@ import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/common/widgets/filled_app_button.dart';
 import 'package:breather_app/utils/resource/r.dart';
 import 'package:breather_app/utils/router/paths.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
-class OnboardingBeginView extends StatelessWidget {
+class OnboardingBeginView extends StatefulWidget {
   const OnboardingBeginView({
     super.key,
     required this.onTap,
@@ -16,15 +17,64 @@ class OnboardingBeginView extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
+  State<OnboardingBeginView> createState() => _OnboardingBeginViewState();
+}
+
+class _OnboardingBeginViewState extends State<OnboardingBeginView> {
+  bool isBegin = false;
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         /// [Lottie Animation]
-        SizedBox(
-          height: 598.h,
-          child: Lottie.network(
-              "https://lottie.host/25891627-18a0-41b3-87a4-eec9225fbc71/ZtWjGoJ6Na.json"),
-        ),
+        !isBegin
+            ? SizedBox(
+                height: 598.h,
+                child: Lottie.asset(R.lotties.welcomeAnimation),
+              )
+            : SizedBox(
+                height: 598.h,
+                child: CircularCountDownTimer(
+                  duration: 4,
+                  initialDuration: 0,
+                  controller: CountDownController(),
+                  width: 524.h,
+                  height: 524.h,
+                  ringColor: Colors.orange,
+                  ringGradient: null,
+                  fillColor: Colors.white,
+                  fillGradient: null,
+                  backgroundColor: Colors.white,
+                  backgroundGradient: null,
+                  strokeWidth: 24,
+                  strokeCap: StrokeCap.round,
+                  textStyle: TextStyle(
+                    fontSize: 124.sp,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textFormat: CountdownTextFormat.S,
+                  isReverse: true,
+                  isReverseAnimation: true,
+                  isTimerTextShown: true,
+                  autoStart: true,
+                  onComplete: () {
+                    widget.onTap();
+                  },
+                  onChange: (String timeStamp) {
+                    debugPrint('Countdown Changed $timeStamp');
+                  },
+                  timeFormatterFunction: (defaultFormatterFunction, duration) {
+                    if (duration.inSeconds == 0) {
+                      return "Start";
+                    } else {
+                      return Function.apply(
+                          defaultFormatterFunction, [duration]);
+                    }
+                  },
+                ),
+              ),
 
         const Spacer(),
 
@@ -48,7 +98,11 @@ class OnboardingBeginView extends StatelessWidget {
             /// [Yes]
             FilledAppButton(
               text: 'Yes',
-              onTap: onTap,
+              onTap: () {
+                setState(() {
+                  isBegin = true;
+                });
+              },
               color: R.colors.blue42C4FB,
               textColor: R.colors.white,
               width: 201.w,

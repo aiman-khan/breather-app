@@ -17,6 +17,22 @@ class OnboardingSummaryView extends ConsumerWidget {
     final score = ref.watch(breathingScoreProvider);
     final seconds = ref.watch(breathingSecondsProvider);
 
+    String result(int score) {
+      String message = '';
+
+      if (score >= 0 && score <= 1) {
+        message = 'Average';
+      } else if (score >= 2 && score <= 4) {
+        message = 'Good';
+      } else if (score >= 5 && score <= 9) {
+        message = 'Strong';
+      } else {
+        message = 'Super';
+      }
+
+      return message;
+    }
+
     return Column(
       children: [
         /// [Summary]
@@ -75,15 +91,15 @@ class OnboardingSummaryView extends ConsumerWidget {
               fontWeight: FontWeight.w400,
               color: R.colors.black,
             ),
-            children: const [
-              TextSpan(text: "You've "),
+            children: [
+              const TextSpan(text: "You've "),
               TextSpan(
-                text: "strong",
-                style: TextStyle(
+                text: result(score),
+                style: const TextStyle(
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              TextSpan(
+              const TextSpan(
                 text: " lungs",
               ),
             ],

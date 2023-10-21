@@ -28,8 +28,9 @@ class WelcomeView extends StatelessWidget {
                 /// [Lottie Animation]
                 SizedBox(
                   height: 598.h,
-                  child: Lottie.network(
-                      "https://lottie.host/25891627-18a0-41b3-87a4-eec9225fbc71/ZtWjGoJ6Na.json"),
+                  child: Lottie.asset(
+                    R.lotties.welcomeAnimation,
+                  ),
                 ),
 
                 101.hb,

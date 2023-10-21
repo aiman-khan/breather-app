@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/common/widgets/filled_app_button.dart';
 import 'package:breather_app/features/onboarding/presentation/providers/breathing_result_provider.dart';
 import 'package:breather_app/utils/resource/r.dart';
@@ -26,11 +25,16 @@ class _OnboardingTestViewState extends ConsumerState<OnboardingTestView> {
   @override
   void initState() {
     super.initState();
-    startTimer();
+
+    Future.delayed(const Duration(seconds: 3)).whenComplete(
+      () {
+        startTimer();
+      },
+    );
   }
 
   void startTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
+    timer = Timer.periodic(const Duration(milliseconds: 1700), (Timer timer) {
       setState(() {
         seconds++;
         ref.read(breathingSecondsProvider.notifier).state = seconds;
@@ -55,20 +59,11 @@ class _OnboardingTestViewState extends ConsumerState<OnboardingTestView> {
       children: [
         /// [Lottie Animation]
         SizedBox(
-            height: 598.h,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("$seconds"),
-                100.hb,
-                Text(
-                  "$score",
-                  style: TextStyle(
-                    fontSize: 56.sp,
-                  ),
-                ),
-              ],
-            )),
+          height: 598.h,
+          child: Image.asset(
+            R.gifs.breathingTestGif,
+          ),
+        ),
 
         const Spacer(),
 

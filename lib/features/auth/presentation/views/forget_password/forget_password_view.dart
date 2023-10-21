@@ -1,10 +1,17 @@
 import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/common/widgets/filled_app_button.dart';
-import 'package:breather_app/features/auth/presentation/views/forget_password/enter_new_password_view.dart';
+import 'package:breather_app/features/auth/domain/usecases/reset_password_usecase.dart';
+import 'package:breather_app/features/auth/presentation/widgets/success_message_widget.dart';
 import 'package:breather_app/features/auth/presentation/widgets/text_field_widget.dart';
+import 'package:breather_app/utils/di/di.dart';
+import 'package:breather_app/utils/exceptions/exceptions.dart';
+import 'package:breather_app/utils/loading/loading.dart';
 import 'package:breather_app/utils/resource/r.dart';
+import 'package:breather_app/utils/router/paths.dart';
+import 'package:breather_app/utils/toast/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
@@ -16,8 +23,25 @@ class ForgetPasswordView extends StatefulWidget {
 class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   final _inputEmail = TextEditingController();
 
-  void _submit() {
-    _navigate();
+  Future<void> _submit() async {
+    final resetPasswordUsecase = sl<ResetPasswordUsecase>();
+    final input = ResetPasswordUsecaseInput(email: _inputEmail.text);
+
+    try {
+      loading(context);
+      final output = await resetPasswordUsecase(input);
+      if (output.isSuccess) {
+        _navigate();
+      }
+    } on MessageException catch (e) {
+      showToast(e.message);
+    } on SomethingWentWrongException {
+      showToast('Something Went Wrong');
+    } catch (e) {
+      showToast("An error has occurred");
+    } finally {
+      dismissLoading();
+    }
   }
 
   void _navigate() {
@@ -25,7 +49,13 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return const EnterNewPasswordView();
+          return SuccessMessageWidget(
+            message:
+                'Congratulations! Your password has been changed successfully.',
+            onDone: () {
+              GoRouter.of(context).pushReplacement(RoutePaths.login);
+            },
+          );
         },
       ),
     );

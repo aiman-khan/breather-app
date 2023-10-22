@@ -103,9 +103,9 @@ class _OnboardingBeginViewState extends State<OnboardingBeginView> {
                   isBegin = true;
                 });
               },
-              color: R.colors.blue42C4FB,
               textColor: R.colors.white,
               width: 201.w,
+              fontSize: 35.sp,
             ),
 
             95.wb,
@@ -114,9 +114,12 @@ class _OnboardingBeginViewState extends State<OnboardingBeginView> {
             FilledAppButton(
               text: 'No',
               onTap: () => GoRouter.of(context).push(RoutePaths.login),
-              color: R.colors.greyC8CDCF,
               textColor: R.colors.white,
               width: 201.w,
+              colors: [
+                R.colors.greyC8CDCF,
+                R.colors.grey828384,
+              ],
             ),
           ],
         ),

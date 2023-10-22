@@ -85,7 +85,6 @@ class _OnboardingTestViewState extends ConsumerState<OnboardingTestView> {
         FilledAppButton(
           text: 'Next',
           onTap: widget.onTap,
-          color: R.colors.blue42C4FB,
           textColor: R.colors.white,
           width: 250.w,
           height: 63.h,

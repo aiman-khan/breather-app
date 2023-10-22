@@ -7,7 +7,7 @@ class FilledAppButton extends StatelessWidget {
   const FilledAppButton({
     required this.text,
     required this.onTap,
-    required this.color,
+    this.colors,
     this.textColor,
     super.key,
     this.width,
@@ -17,7 +17,7 @@ class FilledAppButton extends StatelessWidget {
 
   final String text;
   final VoidCallback onTap;
-  final Color color;
+  final List<Color>? colors;
   final Color? textColor;
   final double? width;
   final double? height;
@@ -25,27 +25,56 @@ class FilledAppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton(
-      onPressed: onTap,
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(color),
-        minimumSize:
-            MaterialStateProperty.all(Size(width ?? 360.w, height ?? 90.h)),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.r),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: height ?? 103.h,
+        width: width ?? 382.w,
+        alignment: Alignment.center,
+        constraints: BoxConstraints(minWidth: width ?? 383.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50.r),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: colors ??
+                [
+                  R.colors.blue224F96,
+                  R.colors.blue132D69,
+                ],
+          ),
+        ),
+        child: Text(
+          text,
+          style: GoogleFonts.poppins(
+            color: textColor ?? R.colors.white,
+            fontSize: fontSize ?? 50.sp,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
-      child: Text(
-        text,
-        style: GoogleFonts.notoSans(
-          color: textColor ?? R.colors.white,
-          fontSize: fontSize ?? 35.sp,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.42.w,
-        ),
-      ),
     );
+    // return FilledButton(
+    //   onPressed: onTap,
+    //   style: ButtonStyle(
+    //     backgroundColor: MaterialStateProperty.all(color),
+    //     minimumSize:
+    //         MaterialStateProperty.all(Size(width ?? 360.w, height ?? 90.h)),
+    //     shape: MaterialStateProperty.all(
+    //       RoundedRectangleBorder(
+    //         borderRadius: BorderRadius.circular(20.r),
+    //       ),
+    //     ),
+    //   ),
+    //   child: Text(
+    //     text,
+    //     style: GoogleFonts.notoSans(
+    //       color: textColor ?? R.colors.white,
+    //       fontSize: fontSize ?? 35.sp,
+    //       fontWeight: FontWeight.w600,
+    //       letterSpacing: 0.42.w,
+    //     ),
+    //   ),
+    // );
   }
 }

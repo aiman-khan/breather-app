@@ -155,7 +155,6 @@ class OnboardingSummaryView extends ConsumerWidget {
         FilledAppButton(
           text: 'Next',
           onTap: onTap,
-          color: R.colors.blue42C4FB,
           textColor: R.colors.white,
           width: 250.w,
           height: 63.h,

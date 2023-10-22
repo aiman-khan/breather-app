@@ -12,7 +12,7 @@ class AppNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'BREATHER',
-      style: GoogleFonts.hurricane(
+      style: TextStyle(
         fontSize: 50.sp,
         letterSpacing: 6.w,
         color: R.colors.black,

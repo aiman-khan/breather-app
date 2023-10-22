@@ -44,94 +44,108 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: 59.h,
-              left: 70.w,
-              right: 70.w,
-              bottom: 173.h,
-            ),
-            child: Column(
-              children: [
-                /// [Skip]
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 10.h,
-                      horizontal: 18.w,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(55.r),
-                      border: Border.all(color: R.colors.blue42C4FB),
-                    ),
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                        fontSize: 23.sp,
-                        color: R.colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-
-                50.hb,
-
-                /// [App Name]
-                const AppNameWidget(),
-
-                23.hb,
-
-                /// [Page view]
-                Expanded(
-                  child: PageView(
-                    controller: pageController,
-                    physics: const BouncingScrollPhysics(),
-                    onPageChanged: (page) {
-                      setState(() {
-                        index = page;
-                      });
-                    },
-                    children: [
-                      OnboardingBeginView(
-                        onTap: () => animate(1),
-                      ),
-                      OnboardingTestView(
-                        onTap: () => animate(2),
-                      ),
-                      OnboardingSummaryView(
-                        onTap: () =>
-                            GoRouter.of(context).push(RoutePaths.login),
-                      ),
-                    ],
-                  ),
-                ),
-
-                137.hb,
-
-                /// [Progress]
-                AnimatedAlign(
-                  alignment: index == 0
-                      ? Alignment.topLeft
-                      : index == 1
-                          ? Alignment.topCenter
-                          : Alignment.topRight,
-                  duration: const Duration(milliseconds: 300),
-                  child: Container(
-                    width: 143.w,
-                    height: 8.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.r),
-                      color: R.colors.blue42C4FB,
-                    ),
-                  ),
-                ),
-              ],
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  R.colors.whiteFDFDFE,
+                  R.colors.blue669BE7,
+                ],
+              ),
             ),
           ),
-        ),
+          SafeArea(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 59.h,
+                  left: 70.w,
+                  right: 70.w,
+                  bottom: 173.h,
+                ),
+                child: Column(
+                  children: [
+                    /// [Skip]
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10.h,
+                          horizontal: 18.w,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(55.r),
+                          border: Border.all(color: R.colors.blue42C4FB),
+                        ),
+                        child: Text(
+                          'Skip',
+                          style: TextStyle(
+                            fontSize: 23.sp,
+                            color: R.colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    50.hb,
+
+                    /// [App Name]
+                    const AppNameWidget(),
+
+                    23.hb,
+
+                    /// [Page view]
+                    Expanded(
+                      child: PageView(
+                        controller: pageController,
+                        physics: const BouncingScrollPhysics(),
+                        onPageChanged: (page) {
+                          setState(() {
+                            index = page;
+                          });
+                        },
+                        children: [
+                          OnboardingBeginView(
+                            onTap: () => animate(1),
+                          ),
+                          OnboardingTestView(
+                            onTap: () => animate(2),
+                          ),
+                          OnboardingSummaryView(
+                            onTap: () =>
+                                GoRouter.of(context).push(RoutePaths.login),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    137.hb,
+
+                    /// [Progress]
+                    AnimatedAlign(
+                      alignment: index == 0
+                          ? Alignment.topLeft
+                          : index == 1
+                              ? Alignment.topCenter
+                              : Alignment.topRight,
+                      duration: const Duration(milliseconds: 300),
+                      child: Container(
+                        width: 143.w,
+                        height: 8.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.r),
+                          color: R.colors.blue42C4FB,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

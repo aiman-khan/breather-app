@@ -50,9 +50,8 @@ class WelcomeView extends StatelessWidget {
 
                 /// [Let's go Button]
                 FilledAppButton(
-                  text: "Let's go",
+                  text: "Let's start",
                   onTap: () => GoRouter.of(context).push(RoutePaths.onboarding),
-                  color: R.colors.blue42C4FB,
                   textColor: R.colors.white,
                 ),
               ],

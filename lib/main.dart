@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       //Add device pixel ratio here
-      designSize: const Size(720, 1584),
+      designSize: const Size(360, 720),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -52,7 +52,7 @@ class _ProviderAppState extends State<ProviderApp> {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          textTheme: GoogleFonts.interTextTheme(),
+          textTheme: GoogleFonts.poppinsTextTheme(),
           scaffoldBackgroundColor: R.colors.white,
         ),
         routerConfig: router,

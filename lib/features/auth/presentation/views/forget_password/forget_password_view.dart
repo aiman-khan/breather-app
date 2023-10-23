@@ -107,7 +107,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 FilledAppButton(
                   text: 'Confirm Email',
                   onTap: _submit,
-                  color: R.colors.blue42C4FB,
                   width: 194.w,
                   height: 62.h,
                   fontSize: 25.sp,

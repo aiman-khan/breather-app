@@ -156,8 +156,6 @@ class OnboardingSummaryView extends ConsumerWidget {
           text: 'Next',
           onTap: onTap,
           textColor: R.colors.white,
-          width: 250.w,
-          height: 63.h,
           fontSize: 22.sp,
         ),
       ],

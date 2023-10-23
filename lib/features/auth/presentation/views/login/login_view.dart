@@ -200,7 +200,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
                   FilledAppButton(
                     text: 'Login',
                     onTap: _login,
-                    color: R.colors.blue42C4FB,
                     width: 194.w,
                     height: 62.h,
                     fontSize: 25.sp,

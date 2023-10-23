@@ -36,7 +36,6 @@ class SuccessMessageWidget extends StatelessWidget {
               FilledAppButton(
                 text: 'Done',
                 onTap: onDone,
-                color: R.colors.blue42C4FB,
                 width: 194.w,
                 height: 62.h,
                 fontSize: 25.sp,

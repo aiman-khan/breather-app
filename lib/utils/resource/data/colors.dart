@@ -7,6 +7,7 @@ class _Colors {
   final Color blue0460EA = const Color(0xFF0460EA);
   final Color blue224F96 = const Color(0xFF224F96);
   final Color blue132D69 = const Color(0xFF132D69);
+  final Color blue173777 = const Color(0xFF173777);
   final Color blue669BE7 = const Color(0xFF669BE7);
   final Color whiteFDFDFE = const Color(0xFFFDFDFE);
   final Color greyC8CDCF = const Color(0xFFC8CDCF);

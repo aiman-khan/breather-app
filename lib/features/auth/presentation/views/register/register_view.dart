@@ -226,7 +226,6 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   FilledAppButton(
                     text: 'Sign Up',
                     onTap: _signUp,
-                    color: R.colors.blue42C4FB,
                     width: 194.w,
                     height: 62.h,
                     fontSize: 25.sp,

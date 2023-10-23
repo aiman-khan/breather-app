@@ -37,7 +37,6 @@ class WelcomeWidget extends StatelessWidget {
                 text: 'Start here',
                 onTap: () =>
                     onTap ?? GoRouter.of(context).push(RoutePaths.home),
-                color: R.colors.blue42C4FB,
                 width: 480.w,
                 height: 90.h,
                 fontSize: 35.sp,

@@ -116,6 +116,7 @@ class _OnboardingBeginViewState extends State<OnboardingBeginView> {
               onTap: () => GoRouter.of(context).push(RoutePaths.login),
               textColor: R.colors.white,
               width: 201.w,
+              fontSize: 35.sp,
               colors: [
                 R.colors.greyC8CDCF,
                 R.colors.grey828384,

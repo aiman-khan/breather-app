@@ -13,9 +13,8 @@ class AppNameWidget extends StatelessWidget {
     return Text(
       'BREATHER',
       style: TextStyle(
-        fontSize: 50.sp,
-        letterSpacing: 6.w,
-        color: R.colors.black,
+        fontSize: 35.27.sp,
+        color: R.colors.blue173777,
         fontWeight: FontWeight.w700,
       ),
     );

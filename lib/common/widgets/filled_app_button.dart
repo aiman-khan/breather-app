@@ -28,10 +28,10 @@ class FilledAppButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: height ?? 103.h,
-        width: width ?? 382.w,
+        height: height ?? 83.h,
+        width: width ?? 201.w,
         alignment: Alignment.center,
-        constraints: BoxConstraints(minWidth: width ?? 383.w),
+        constraints: BoxConstraints(minWidth: width ?? 201.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50.r),
           gradient: LinearGradient(

@@ -49,6 +49,8 @@ class _OnboardingViewState extends State<OnboardingView> {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
                 colors: [
                   R.colors.whiteFDFDFE,
                   R.colors.blue669BE7,
@@ -67,30 +69,6 @@ class _OnboardingViewState extends State<OnboardingView> {
                 ),
                 child: Column(
                   children: [
-                    /// [Skip]
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 10.h,
-                          horizontal: 18.w,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(55.r),
-                          border: Border.all(color: R.colors.blue42C4FB),
-                        ),
-                        child: Text(
-                          'Skip',
-                          style: TextStyle(
-                            fontSize: 23.sp,
-                            color: R.colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    50.hb,
-
                     /// [App Name]
                     const AppNameWidget(),
 
@@ -123,22 +101,25 @@ class _OnboardingViewState extends State<OnboardingView> {
 
                     137.hb,
 
-                    /// [Progress]
-                    AnimatedAlign(
-                      alignment: index == 0
-                          ? Alignment.topLeft
-                          : index == 1
-                              ? Alignment.topCenter
-                              : Alignment.topRight,
-                      duration: const Duration(milliseconds: 300),
-                      child: Container(
-                        width: 143.w,
-                        height: 8.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.r),
-                          color: R.colors.blue42C4FB,
-                        ),
-                      ),
+                    // White bars based on index
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        for (int i = 0; i < 3; i++)
+                          Flexible(
+                            child: Container(
+                              width: 143.w,
+                              height: 12.h,
+                              margin: EdgeInsets.symmetric(horizontal: 5.w),
+                              decoration: BoxDecoration(
+                                color: i == index
+                                    ? R.colors.blue132D69
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(6.r),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ],
                 ),

@@ -48,33 +48,11 @@ class FilledAppButton extends StatelessWidget {
           text,
           style: GoogleFonts.poppins(
             color: textColor ?? R.colors.white,
-            fontSize: fontSize ?? 50.sp,
-            fontWeight: FontWeight.w500,
+            fontSize: fontSize ?? 13.22.sp,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
     );
-    // return FilledButton(
-    //   onPressed: onTap,
-    //   style: ButtonStyle(
-    //     backgroundColor: MaterialStateProperty.all(color),
-    //     minimumSize:
-    //         MaterialStateProperty.all(Size(width ?? 360.w, height ?? 90.h)),
-    //     shape: MaterialStateProperty.all(
-    //       RoundedRectangleBorder(
-    //         borderRadius: BorderRadius.circular(20.r),
-    //       ),
-    //     ),
-    //   ),
-    //   child: Text(
-    //     text,
-    //     style: GoogleFonts.notoSans(
-    //       color: textColor ?? R.colors.white,
-    //       fontSize: fontSize ?? 35.sp,
-    //       fontWeight: FontWeight.w600,
-    //       letterSpacing: 0.42.w,
-    //     ),
-    //   ),
-    // );
   }
 }

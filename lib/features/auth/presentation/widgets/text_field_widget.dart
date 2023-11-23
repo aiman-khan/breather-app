@@ -1,7 +1,7 @@
+import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/utils/resource/r.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
@@ -9,6 +9,8 @@ class TextFieldWidget extends StatelessWidget {
     required this.controller,
     required this.validator,
     required this.hintText,
+    required this.label,
+    this.suffixIcon,
     this.isObscureText = false,
   });
 
@@ -16,75 +18,74 @@ class TextFieldWidget extends StatelessWidget {
   final String? Function(String?)? validator;
   final String hintText;
   final bool isObscureText;
+  final String label;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 542.w,
-      child: Stack(
-        children: [
-          Container(
-            width: 542.w,
-            height: 85.h,
-            padding: EdgeInsets.symmetric(
-              horizontal: 32.w,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(45.r),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: R.colors.greyEDECEC,
-                  blurRadius: 2.0,
-                  spreadRadius: 0.0,
-                  offset: const Offset(2.0, 3.0),
-                )
-              ],
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Text(
+            label,
+            style: TextStyle(
+                fontSize: 12.sp,
+                color: R.colors.black,
+                fontWeight: FontWeight.w700),
+            // ,
           ),
-          TextFormField(
-            controller: controller,
-            validator: validator,
-            obscureText: isObscureText,
-            decoration: InputDecoration(
-              hintText: hintText,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 24.w,
-              ),
-              hintStyle: GoogleFonts.roboto(
-                fontSize: 28.sp,
-                color: R.colors.greyC8CDCF,
-                fontWeight: FontWeight.w500,
-              ),
-              // errorBorder: InputBorder.none,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(45.r),
-                borderSide: BorderSide(
-                  strokeAlign: BorderSide.strokeAlignOutside,
-                  width: 1,
-                  color: R.colors.greyC8CDCF.withOpacity(0.4),
+        ),
+        4.hb,
+        SizedBox(
+          width: 265.w,
+          child: Stack(
+            children: [
+              Container(
+                width: 265.w,
+                height: 46.h,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 32.w,
+                  vertical: 8.h,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(45.r),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: R.colors.greyEDECEC,
+                      blurRadius: 2.0,
+                      spreadRadius: 0.0,
+                      offset: const Offset(2.0, 3.0),
+                    )
+                  ],
                 ),
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(45.r),
-                borderSide: BorderSide(
-                  strokeAlign: BorderSide.strokeAlignOutside,
-                  width: 1,
-                  color: R.colors.greyC8CDCF.withOpacity(0.4),
+              TextFormField(
+                controller: controller,
+                validator: validator,
+                obscureText: isObscureText,
+                decoration: InputDecoration(
+                  hintText: hintText,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 24.w,
+                    vertical: 14.h,
+                  ),
+                  hintStyle: TextStyle(
+                    fontSize: 10.sp,
+                    color: R.colors.greyC8CDCF,
+                  ),
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  suffixIcon: suffixIcon,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(45.r),
-                borderSide: BorderSide(
-                  strokeAlign: BorderSide.strokeAlignOutside,
-                  width: 1,
-                  color: R.colors.greyC8CDCF.withOpacity(0.4),
-                ),
-              ),
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

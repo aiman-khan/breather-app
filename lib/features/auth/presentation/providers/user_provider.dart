@@ -9,6 +9,10 @@ class UserNotifier extends StateNotifier<UserModel?> {
   }
 
   UserModel? get user => state;
+
+  void clear() {
+    state = null;
+  }
 }
 
 final userProvider = StateNotifierProvider<UserNotifier, UserModel?>(

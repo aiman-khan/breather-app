@@ -1,4 +1,3 @@
-import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/common/widgets/filled_app_button.dart';
 import 'package:breather_app/utils/resource/r.dart';
 import 'package:breather_app/utils/router/paths.dart';
@@ -17,32 +16,44 @@ class WelcomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: R.colors.blue42C4FB,
       body: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 96.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.asset(R.images.welcomeBg),
+            Positioned(
+              top: -134.h,
+              child: SizedBox(
+                height: 433.h,
+                width: 266.h,
+                child: Image.asset(R.images.appLogo),
+              ),
+            ),
+            Positioned(
+              bottom: 224.h,
+              child: Text(
                 'Welcome!',
                 style: TextStyle(
-                  fontSize: 70.sp,
+                  fontSize: 35.sp,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 0.84.w,
+                  color: R.colors.white,
                 ),
                 textAlign: TextAlign.center,
               ),
-              475.hb,
-              FilledAppButton(
-                text: 'Start here',
+            ),
+            Positioned(
+              bottom: 100.h,
+              child: FilledAppButton(
+                text: 'Tap here to start',
                 onTap: () =>
                     onTap ?? GoRouter.of(context).push(RoutePaths.home),
-                width: 480.w,
-                height: 90.h,
-                fontSize: 35.sp,
+                width: 256.5.w,
+                height: 45.5.h,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

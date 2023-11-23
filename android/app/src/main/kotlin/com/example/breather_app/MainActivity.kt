@@ -1,0 +1,6 @@
+package com.example.breather_app
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

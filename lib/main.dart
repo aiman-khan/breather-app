@@ -1,17 +1,20 @@
+import 'package:breather_app/helpers/persistence/persistence_helper.dart';
 import 'package:breather_app/utils/di/di.dart';
 import 'package:breather_app/utils/resource/r.dart';
 import 'package:breather_app/utils/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'common/extensions/num.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   configureDependencies();
+  await sl<PersistenceHelper>().init();
   runApp(const MyApp());
 }
 
@@ -52,7 +55,7 @@ class _ProviderAppState extends State<ProviderApp> {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          textTheme: GoogleFonts.poppinsTextTheme(),
+          fontFamily: 'Poppins',
           scaffoldBackgroundColor: R.colors.white,
         ),
         routerConfig: router,

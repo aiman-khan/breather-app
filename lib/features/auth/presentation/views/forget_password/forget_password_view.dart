@@ -64,57 +64,74 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 96.w,
-              vertical: 186.h,
-            ),
-            child: Column(
-              children: [
-                Text(
-                  'Enter your e-mail',
-                  style: TextStyle(
-                    fontSize: 45.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                45.hb,
-                Text(
-                  'You will receive a link to confirm the password change to the e-mail address provided',
-                  style: TextStyle(
-                    fontSize: 28.sp,
-                    color: R.colors.black.withOpacity(0.6),
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
-                86.hb,
-
-                /// [Email Text Field]
-                TextFieldWidget(
-                  controller: _inputEmail,
-                  validator: (v) {
-                    return null;
-                  },
-                  hintText: 'Enter your e-mail',
-                ),
-
-                138.hb,
-
-                FilledAppButton(
-                  text: 'Confirm Email',
-                  onTap: _submit,
-                  width: 194.w,
-                  height: 62.h,
-                  fontSize: 25.sp,
-                ),
-              ],
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  R.colors.whiteFDFDFE,
+                  R.colors.blue669BE7,
+                ],
+              ),
             ),
           ),
-        ),
+          SafeArea(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 186.h,
+                  horizontal: 27.w,
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Enter your e-mail',
+                      style: TextStyle(
+                        fontSize: 22.37.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    45.hb,
+                    Text(
+                      'You will receive a link to confirm the password change to the e-mail address provided',
+                      style: TextStyle(
+                        fontSize: 13.134.sp,
+                        color: R.colors.black.withOpacity(0.6),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    34.hb,
+
+                    /// [Email Text Field]
+                    TextFieldWidget(
+                      controller: _inputEmail,
+                      label: '',
+                      validator: (v) {
+                        return null;
+                      },
+                      hintText: 'Enter your e-mail',
+                    ),
+
+                    61.5.hb,
+
+                    FilledAppButton(
+                      text: 'Confirm Email',
+                      onTap: _submit,
+                      width: 113.w,
+                      height: 35.h,
+                      fontSize: 12.62.sp,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -67,7 +67,8 @@ class WelcomeView extends StatelessWidget {
                       text: "Let's start",
                       width: 175.w,
                       height: 47.h,
-                      onTap: () => GoRouter.of(context).push(RoutePaths.login),
+                      onTap: () =>
+                          GoRouter.of(context).push(RoutePaths.onboarding),
                       textColor: R.colors.white,
                       fontSize: 13.22.sp,
                     ),

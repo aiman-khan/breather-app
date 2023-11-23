@@ -2,12 +2,15 @@ import 'dart:developer';
 
 import 'package:breather_app/features/auth/domain/models/user/user.dart';
 import 'package:breather_app/features/auth/domain/source/firebase/auth_firebase_data_source.dart';
+import 'package:breather_app/features/auth/domain/usecases/get_user_from_firestore_usecase.dart';
 import 'package:breather_app/features/auth/domain/usecases/login_usecase.dart';
 import 'package:breather_app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:breather_app/features/auth/domain/usecases/reset_password_usecase.dart';
 import 'package:breather_app/features/auth/domain/usecases/sign_in_with_google_usecase.dart';
 import 'package:breather_app/utils/exceptions/exceptions.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
@@ -28,10 +31,12 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
       if (user == null) {
         throw SomethingWentWrongException();
       }
+
       return LoginUsecaseOutput(
         user: UserModel(
           email: user.email!,
           name: user.displayName!,
+          id: user.uid,
         ),
       );
     } on FirebaseAuthException catch (e) {
@@ -71,10 +76,23 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
       log('Email: ${user.email}');
       log('Name: ${user.displayName}');
 
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).set(
+        {
+          'id': user.uid,
+          'email': user.email,
+          'name': user.displayName,
+          'streak': 0,
+          'score': 0,
+          'completedExercises': 0,
+          'lastUpdated': '${user.metadata.creationTime}',
+        },
+      );
+
       return RegisterUsecaseOutput(
         user: UserModel(
           email: user.email!,
           name: user.displayName!,
+          id: user.uid,
         ),
       );
     } on FirebaseAuthException catch (e) {
@@ -113,6 +131,7 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
       final user = UserModel(
         name: authResult.user!.displayName!,
         email: authResult.user!.email!,
+        id: authResult.user!.uid,
       );
 
       return SignInWithGoogleUsecaseOutput(user: user);
@@ -141,5 +160,26 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
       throw SomethingWentWrongException();
     }
     return ResetPasswordUsecaseOutput(isSuccess: isSuccess);
+  }
+
+  @override
+  Future<GetUserFromFirestoreUsecaseOutput> getUserFromFirestore(
+      GetUserFromFirestoreUsecaseInput input) async {
+    try {
+      CollectionReference usersCollection =
+          FirebaseFirestore.instance.collection('users');
+      DocumentSnapshot userSnapshot = await usersCollection.doc(input.id).get();
+
+      if (userSnapshot.exists) {
+        final user = UserModel.fromFirestore(userSnapshot);
+        return GetUserFromFirestoreUsecaseOutput(user: user);
+      } else {
+        return GetUserFromFirestoreUsecaseOutput(user: null);
+      }
+    } catch (e) {
+      debugPrint('Error getting user: $e');
+    }
+
+    return GetUserFromFirestoreUsecaseOutput(user: null);
   }
 }

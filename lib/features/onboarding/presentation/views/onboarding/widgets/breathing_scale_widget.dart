@@ -15,13 +15,13 @@ class BreathingScaleWidget extends ConsumerWidget {
     final value = score / 10;
 
     return SizedBox(
-      width: 585.w,
+      width: 287.w,
       child: Stack(
         alignment: Alignment.center,
         children: [
           Container(
-            width: 585.w,
-            height: 57.h,
+            width: 287.w,
+            height: 27.h,
             decoration: BoxDecoration(
               color: R.colors.greyEDECEC,
               borderRadius: BorderRadius.circular(30.r),

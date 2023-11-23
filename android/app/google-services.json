@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30849507755",
+    "project_id": "breatherapp-f51f9",
+    "storage_bucket": "breatherapp-f51f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30849507755:android:ee222ff2416f64837372ee",
+        "android_client_info": {
+          "package_name": "com.example.breather_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5p7VaZR1g0T5yJx1kN0KCLQgA1qXkBBw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

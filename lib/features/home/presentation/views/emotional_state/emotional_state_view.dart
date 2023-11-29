@@ -49,7 +49,7 @@ class EmotionalStateView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {},
                         child: Icon(
                           Icons.more_vert,
@@ -57,7 +57,7 @@ class EmotionalStateView extends StatelessWidget {
                           size: 28.r,
                         ),
                       ),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           GoRouter.of(context).push(RoutePaths.premium);
                         },
@@ -150,7 +150,7 @@ class EmotionalStateView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {},
                         child: Column(
                           children: [
@@ -167,11 +167,11 @@ class EmotionalStateView extends StatelessWidget {
                           ],
                         ),
                       ),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {},
                         child: SvgPicture.asset(R.images.homeIcon),
                       ),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           GoRouter.of(context).push(RoutePaths.progress);
                         },

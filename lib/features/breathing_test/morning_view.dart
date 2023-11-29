@@ -132,7 +132,7 @@ class _MorningViewState extends State<MorningView> {
                   ),
                 ),
                 62.7.hb,
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     GoRouter.of(context).pop();
                   },

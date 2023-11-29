@@ -23,21 +23,21 @@ import '../../features/auth/domain/source/local/auth_local_data_source.dart'
     as _i16;
 import '../../features/auth/domain/usecases/get_interests_usecase.dart' as _i21;
 import '../../features/auth/domain/usecases/get_user_from_firestore_usecase.dart'
-    as _i22;
-import '../../features/auth/domain/usecases/get_user_usecase.dart' as _i23;
+    as _i23;
+import '../../features/auth/domain/usecases/get_user_usecase.dart' as _i24;
 import '../../features/auth/domain/usecases/is_fresh_install_usecase.dart'
-    as _i24;
-import '../../features/auth/domain/usecases/login_usecase.dart' as _i25;
-import '../../features/auth/domain/usecases/register_usecase.dart' as _i26;
-import '../../features/auth/domain/usecases/remove_user_usecase.dart' as _i27;
+    as _i25;
+import '../../features/auth/domain/usecases/login_usecase.dart' as _i26;
+import '../../features/auth/domain/usecases/register_usecase.dart' as _i27;
+import '../../features/auth/domain/usecases/remove_user_usecase.dart' as _i29;
 import '../../features/auth/domain/usecases/reset_password_usecase.dart'
-    as _i28;
-import '../../features/auth/domain/usecases/save_interest_usecase.dart' as _i29;
-import '../../features/auth/domain/usecases/save_user_usecase.dart' as _i30;
+    as _i30;
+import '../../features/auth/domain/usecases/save_interest_usecase.dart' as _i31;
+import '../../features/auth/domain/usecases/save_user_usecase.dart' as _i33;
 import '../../features/auth/domain/usecases/set_fresh_install_usecase.dart'
-    as _i31;
+    as _i34;
 import '../../features/auth/domain/usecases/sign_in_with_google_usecase.dart'
-    as _i32;
+    as _i35;
 import '../../features/breathing_test/data/repository/repository_impl.dart'
     as _i8;
 import '../../features/breathing_test/data/source/firebase/firebase_data_source_impl.dart'
@@ -57,6 +57,12 @@ import '../../features/breathing_test/domain/usecases/save_score_usecase.dart'
     as _i14;
 import '../../features/breathing_test/domain/usecases/save_streak_usecase.dart'
     as _i15;
+import '../../features/schedular/domain/usecases/get_schedule_usecase.dart'
+    as _i22;
+import '../../features/schedular/domain/usecases/remove_schedule_usecase.dart'
+    as _i28;
+import '../../features/schedular/domain/usecases/save_schedule_usecase.dart'
+    as _i32;
 import '../../helpers/persistence/persistence_helper.dart' as _i11;
 import '../../helpers/persistence/persistence_helper_imp.dart' as _i12;
 
@@ -99,31 +105,38 @@ extension GetItInjectableX on _i1.GetIt {
         breatherRepository: gh<_i7.BreatherRepository>()));
     gh.lazySingleton<_i21.GetInterestsUsecase>(() =>
         _i21.GetInterestsUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i22.GetUserFromFirestoreUsecase>(() =>
-        _i22.GetUserFromFirestoreUsecase(
+    gh.lazySingleton<_i22.GetScheduleUsecase>(() => _i22.GetScheduleUsecase(
+        schedularRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i23.GetUserFromFirestoreUsecase>(() =>
+        _i23.GetUserFromFirestoreUsecase(
             signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i23.GetUserUsecase>(
-        () => _i23.GetUserUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i24.IsFreshInstallUsecase>(() =>
-        _i24.IsFreshInstallUsecase(
+    gh.lazySingleton<_i24.GetUserUsecase>(
+        () => _i24.GetUserUsecase(signUpRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i25.IsFreshInstallUsecase>(() =>
+        _i25.IsFreshInstallUsecase(
             signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i25.LoginUsecase>(
-        () => _i25.LoginUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i26.RegisterUsecase>(() =>
-        _i26.RegisterUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i27.RemoveUserUsecase>(() =>
-        _i27.RemoveUserUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i28.ResetPasswordUsecase>(() =>
-        _i28.ResetPasswordUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i29.SaveInterestUsecase>(() =>
-        _i29.SaveInterestUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i30.SaveUserUsecase>(() =>
-        _i30.SaveUserUsecase(signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i31.SetFreshInstallUsecase>(() =>
-        _i31.SetFreshInstallUsecase(
+    gh.lazySingleton<_i26.LoginUsecase>(
+        () => _i26.LoginUsecase(signUpRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i27.RegisterUsecase>(() =>
+        _i27.RegisterUsecase(signUpRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i28.RemoveScheduleUsecase>(() =>
+        _i28.RemoveScheduleUsecase(
+            schedularRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i29.RemoveUserUsecase>(() =>
+        _i29.RemoveUserUsecase(signUpRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i30.ResetPasswordUsecase>(() =>
+        _i30.ResetPasswordUsecase(signUpRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i31.SaveInterestUsecase>(() =>
+        _i31.SaveInterestUsecase(signUpRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i32.SaveScheduleUsecase>(() => _i32.SaveScheduleUsecase(
+        schedularRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i33.SaveUserUsecase>(() =>
+        _i33.SaveUserUsecase(signUpRepository: gh<_i18.AuthRepository>()));
+    gh.lazySingleton<_i34.SetFreshInstallUsecase>(() =>
+        _i34.SetFreshInstallUsecase(
             signUpRepository: gh<_i18.AuthRepository>()));
-    gh.lazySingleton<_i32.SignInWithGoogleUsecase>(() =>
-        _i32.SignInWithGoogleUsecase(
+    gh.lazySingleton<_i35.SignInWithGoogleUsecase>(() =>
+        _i35.SignInWithGoogleUsecase(
             signUpRepository: gh<_i18.AuthRepository>()));
     return this;
   }

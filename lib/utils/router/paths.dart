@@ -16,4 +16,6 @@ class RoutePaths {
   static const result = '/result';
   static const progress = '/progress';
   static const enableDisablePermissions = '/enableDisablePermissions';
+  static const sessionSchedular = '/sessionSchedular';
+  static const setTimer = '/setTimer';
 }

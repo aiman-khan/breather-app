@@ -25,7 +25,8 @@ class FilledAppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      borderRadius: BorderRadius.circular(50.r),
       onTap: onTap,
       child: Container(
         height: height ?? 83.h,

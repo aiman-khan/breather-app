@@ -51,7 +51,7 @@ class PermissionTile extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              GestureDetector(
+              InkWell(
                 onTap: onTap,
                 child: Container(
                   width: 50.w,
@@ -88,7 +88,7 @@ class PermissionTile extends StatelessWidget {
             description,
             style: TextStyle(
               fontSize: 11.sp,
-              color: Color(0xFF717171),
+              color: const Color(0xFF717171),
             ),
           ),
         ],

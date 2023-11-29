@@ -4,11 +4,8 @@ import 'dart:math';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/common/widgets/filled_app_button.dart';
-import 'package:breather_app/features/auth/domain/models/user/user.dart';
-import 'package:breather_app/features/auth/domain/usecases/save_user_usecase.dart';
 import 'package:breather_app/features/onboarding/presentation/providers/breathing_result_provider.dart';
 import 'package:breather_app/features/onboarding/presentation/views/onboarding/widgets/result_widget.dart';
-import 'package:breather_app/utils/di/di.dart';
 import 'package:breather_app/utils/resource/r.dart';
 import 'package:breather_app/utils/router/paths.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +24,6 @@ class TimerCircleWidget extends ConsumerStatefulWidget {
 
 class _TimerCircleWidgetState extends ConsumerState<TimerCircleWidget> {
   int _countdown = 3;
-  int _minutes = 0;
   int _seconds = 0;
   int _score = 0;
   bool _showCountdown = false;
@@ -109,7 +105,6 @@ class _TimerCircleWidgetState extends ConsumerState<TimerCircleWidget> {
 
         if (_seconds == 67) {
           _seconds = 0;
-          _minutes++;
           _timer.cancel();
           isFinished = true;
           buttonText = 'Done';
@@ -146,12 +141,6 @@ class _TimerCircleWidgetState extends ConsumerState<TimerCircleWidget> {
         );
       },
     );
-  }
-
-  Future<void> _saveUser(UserModel user) async {
-    final saveUserUsecase = sl<SaveUserUsecase>();
-    final input = SaveUserUsecaseInput(user: user);
-    await saveUserUsecase(input);
   }
 
   double opacity = 0.0;

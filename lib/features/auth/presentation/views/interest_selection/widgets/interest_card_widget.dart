@@ -43,7 +43,7 @@ class _InterestCardWidgetState extends State<InterestCardWidget> {
   }
 
   Widget buildOption(int index) {
-    return GestureDetector(
+    return InkWell(
       onTap: () => toggleSelection(index),
       child: Container(
         width: 162.w,

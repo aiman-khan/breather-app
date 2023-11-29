@@ -185,7 +185,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                           return null;
                         },
                         hintText: 'Password',
-                        suffixIcon: GestureDetector(
+                        suffixIcon: InkWell(
                           onTap: () {
                             setState(() {
                               showPassword = !showPassword;
@@ -320,7 +320,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
 
                       12.hb,
 
-                      GestureDetector(
+                      InkWell(
                         onTap: () => GoRouter.of(context)
                             .push(RoutePaths.interestSelection),
                         child: Text(
@@ -336,7 +336,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
 
                       11.5.hb,
 
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           setState(() {
                             _isTermsAccepted = !_isTermsAccepted;

@@ -1,11 +1,9 @@
-import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/features/auth/presentation/views/enable_disable_permission/widgets/permission_tile.dart';
 import 'package:breather_app/utils/resource/r.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class EnableDisablePermissionView extends ConsumerStatefulWidget {
@@ -156,7 +154,7 @@ class _LoginViewState extends ConsumerState<EnableDisablePermissionView> {
                           PermissionTile(
                             icon: R.images.calendarIcon,
                             title: 'Calendar',
-                            onTap: _toggleNotificationPermission,
+                            onTap: _toggleCalendarPermission,
                             isEnabled: isNotificationEnabled,
                             description:
                                 'By syncing with your calendar, we can timely suggest breathing practices to help you prepare for and decompress from significant events.',

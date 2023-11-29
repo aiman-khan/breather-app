@@ -46,7 +46,7 @@ class PremiumView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             GoRouter.of(context)
                                 .pushReplacement(RoutePaths.home);

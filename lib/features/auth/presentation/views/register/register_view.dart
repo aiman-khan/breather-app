@@ -207,7 +207,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
 
                       10.hb,
 
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           setState(() {
                             _isTermsAccepted = !_isTermsAccepted;

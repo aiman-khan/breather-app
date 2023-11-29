@@ -55,7 +55,7 @@ class ResultView extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     104.hb,
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         GoRouter.of(context).push(RoutePaths.home);
                       },

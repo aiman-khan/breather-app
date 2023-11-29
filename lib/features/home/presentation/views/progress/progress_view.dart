@@ -56,7 +56,7 @@ class _ProgressViewState extends ConsumerState<ProgressView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          GestureDetector(
+                          InkWell(
                             onTap: () => GoRouter.of(context).pop(),
                             child: Icon(
                               Icons.arrow_back,
@@ -72,7 +72,7 @@ class _ProgressViewState extends ConsumerState<ProgressView> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
                               GoRouter.of(context).push(RoutePaths.premium);
                             },

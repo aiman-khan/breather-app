@@ -13,6 +13,9 @@ import 'package:breather_app/features/auth/domain/usecases/save_interest_usecase
 import 'package:breather_app/features/auth/domain/usecases/save_user_usecase.dart';
 import 'package:breather_app/features/auth/domain/usecases/set_fresh_install_usecase.dart';
 import 'package:breather_app/features/auth/domain/usecases/sign_in_with_google_usecase.dart';
+import 'package:breather_app/features/schedular/domain/usecases/get_schedule_usecase.dart';
+import 'package:breather_app/features/schedular/domain/usecases/remove_schedule_usecase.dart';
+import 'package:breather_app/features/schedular/domain/usecases/save_schedule_usecase.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AuthRepository)
@@ -90,5 +93,22 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<RemoveUserUsecaseOutput> removeUser(RemoveUserUsecaseInput input) {
     return authLocalDataSource.removeUser(input);
+  }
+
+  @override
+  Future<GetScheduleUsecaseOutput> getSchedule(GetScheduleUsecaseInput input) {
+    return authLocalDataSource.getSchedule(input);
+  }
+
+  @override
+  Future<RemoveScheduleUsecaseOutput> removeSchedule(
+      RemoveScheduleUsecaseInput input) {
+    return authLocalDataSource.removeSchedule(input);
+  }
+
+  @override
+  Future<SaveScheduleUsecaseOutput> saveSchedule(
+      SaveScheduleUsecaseInput input) {
+    return authLocalDataSource.saveSchedule(input);
   }
 }

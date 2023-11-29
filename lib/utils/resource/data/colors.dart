@@ -15,10 +15,14 @@ class _Colors {
   final Color whiteFDFDFE = const Color(0xFFFDFDFE);
   final Color greyC8CDCF = const Color(0xFFC8CDCF);
   final Color greyEDECEC = const Color(0xFFEDECEC);
+  final Color grey474747 = const Color(0xFF474747);
+
   final Color greyBABABA = const Color(0xFFBABABA);
   final Color redF55E5E = const Color(0xFFF55E5E);
   final Color black302E2E = const Color(0xFF2E2E2E);
   final Color grey828384 = const Color(0xFF828384);
+  final Color grey6F6F6F = const Color(0xFF6f6f6f);
+
   final Color grey4F4F4F = const Color(0xFF4F4F4F);
   final Color blue173776 = const Color(0xFF173776);
   final Color blue2A59FF = const Color(0xFF2A59FF);

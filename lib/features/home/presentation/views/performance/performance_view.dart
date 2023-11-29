@@ -44,7 +44,7 @@ class PerformanceTabView extends ConsumerWidget {
       child: Column(
         children: [
           Text(
-            "${user?.name ?? 'Your'}'s Daily Activiy",
+            "${user?.name ?? 'Your'}'s Daily Activity",
             style: TextStyle(
               fontSize: 14.sp,
               color: R.colors.black,

@@ -2,7 +2,6 @@ import 'package:breather_app/common/extensions/num.dart';
 import 'package:breather_app/common/widgets/app_name_widget.dart';
 import 'package:breather_app/common/widgets/filled_app_button.dart';
 import 'package:breather_app/features/auth/presentation/providers/user_firestore_provider.dart';
-import 'package:breather_app/features/auth/presentation/providers/user_provider.dart';
 import 'package:breather_app/features/home/domain/models/emotional_state.dart';
 import 'package:breather_app/features/home/presentation/views/emotional_state/emotional_state_view.dart';
 import 'package:breather_app/features/home/presentation/views/emotional_state/widgets/emotional_state_widget.dart';
@@ -60,7 +59,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Builder(builder: (context) {
-                          return GestureDetector(
+                          return InkWell(
                             onTap: () {
                               Scaffold.of(context).openDrawer();
                             },
@@ -72,7 +71,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                           );
                         }),
                         const Spacer(),
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             GoRouter.of(context)
                                 .push(RoutePaths.enableDisablePermissions);
@@ -84,7 +83,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                           ),
                         ),
                         6.wb,
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             GoRouter.of(context).push(RoutePaths.premium);
                           },
@@ -146,10 +145,13 @@ class _HomeViewState extends ConsumerState<HomeView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             if (!userAsync.hasValue) {
                               showLoginActionDialog(context);
+                            } else {
+                              GoRouter.of(context)
+                                  .push(RoutePaths.sessionSchedular);
                             }
                           },
                           child: Column(
@@ -167,11 +169,11 @@ class _HomeViewState extends ConsumerState<HomeView> {
                             ],
                           ),
                         ),
-                        GestureDetector(
+                        InkWell(
                           onTap: () {},
                           child: SvgPicture.asset(R.images.homeIcon),
                         ),
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             if (userAsync.value == null) {
                               showLoginActionDialog(context);

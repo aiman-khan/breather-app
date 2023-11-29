@@ -10,6 +10,8 @@ import 'package:breather_app/features/onboarding/presentation/views/splash/splas
 import 'package:breather_app/features/home/presentation/views/home/home_view.dart';
 import 'package:breather_app/features/onboarding/presentation/views/onboarding/onboarding_view.dart';
 import 'package:breather_app/features/onboarding/presentation/views/welcome/welcome_view.dart';
+import 'package:breather_app/features/schedular/presentation/views/session_schedular/session_schedular_session.dart';
+import 'package:breather_app/features/schedular/presentation/views/set_timer/set_timer_view.dart';
 import 'package:breather_app/utils/router/paths.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -204,44 +206,6 @@ final router = GoRouter(
         },
       ),
     ),
-    // GoRoute(
-    //   path: RoutePaths.morning,
-    //   builder: (context, state) => const MorningView(),
-    //   pageBuilder: (context, state) {
-    //     return CustomTransitionPage(
-    //       transitionDuration: const Duration(milliseconds: 300),
-    //       reverseTransitionDuration: const Duration(milliseconds: 300),
-    //       key: state.pageKey,
-    //       child: const MorningView(),
-    //       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-    //         return FadeTransition(
-    //           opacity:
-    //               CurveTween(curve: Curves.easeInOutCirc).animate(animation),
-    //           child: child,
-    //         );
-    //       },
-    //     );
-    //   },
-    // ),
-    // GoRoute(
-    //   path: RoutePaths.morningPractice,
-    //   builder: (context, state) => const MorningPracticeView(),
-    //   pageBuilder: (context, state) {
-    //     return CustomTransitionPage(
-    //       transitionDuration: const Duration(milliseconds: 300),
-    //       reverseTransitionDuration: const Duration(milliseconds: 300),
-    //       key: state.pageKey,
-    //       child: const MorningPracticeView(),
-    //       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-    //         return FadeTransition(
-    //           opacity:
-    //               CurveTween(curve: Curves.easeInOutCirc).animate(animation),
-    //           child: child,
-    //         );
-    //       },
-    //     );
-    //   },
-    // ),
     GoRoute(
       path: RoutePaths.result,
       builder: (context, state) => const ResultView(),
@@ -289,6 +253,44 @@ final router = GoRouter(
           reverseTransitionDuration: const Duration(milliseconds: 300),
           key: state.pageKey,
           child: const EnableDisablePermissionView(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity:
+                  CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            );
+          },
+        );
+      },
+    ),
+    GoRoute(
+      path: RoutePaths.sessionSchedular,
+      builder: (context, state) => const SessionSchedularView(),
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          transitionDuration: const Duration(milliseconds: 300),
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          key: state.pageKey,
+          child: const SessionSchedularView(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity:
+                  CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+              child: child,
+            );
+          },
+        );
+      },
+    ),
+    GoRoute(
+      path: RoutePaths.setTimer,
+      builder: (context, state) => const SetTimerView(),
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          transitionDuration: const Duration(milliseconds: 300),
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          key: state.pageKey,
+          child: const SetTimerView(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity:

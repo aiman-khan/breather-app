@@ -347,7 +347,7 @@ class _LoginViewState extends ConsumerState<PermissionView> {
                     ),
                   22.hb,
                   if (!isGranted)
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         GoRouter.of(context)
                             .pushReplacement(RoutePaths.onboarding);

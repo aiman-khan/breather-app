@@ -153,7 +153,7 @@ class DrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: 26.h),
-      child: GestureDetector(
+      child: InkWell(
         onTap: onTap,
         child: Row(
           children: [
